@@ -1,0 +1,90 @@
+<div class="jumbotron">
+    <div class="container">
+        <h2 style="text-align: center;">Raise Ticket</h2>
+        <form [formGroup]="raiseTicketForm">
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required">Subject</label>
+                        <input type="text" formControlName="subject" class="form-control" [attr.disabled]="isTicketId"
+                            [ngClass]="{'is-invalid':(raiseTicketForm.get('subject').touched || raiseTicketForm.get('subject').dirty) && raiseTicketForm.get('subject').invalid}" />
+
+                    </div>
+                    <div *ngIf="(raiseTicketForm.get('subject').touched || raiseTicketForm.get('subject').dirty) && raiseTicketForm.get('subject').invalid"
+                        class="error_sachinApp">
+                        <p *ngIf="raiseTicketForm.get('subject').errors.required">Please enter the subject</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Country</label>
+
+
+                        <select class="form-control" (change)="populateCity($event.target.value)"
+                            [(ngModel)]="selectedState" formControlName="country" [attr.disabled]="isTicketId"  >
+
+                            <option *ngFor="let s of State" [value]="s.name" [disabled]="isTicketId">{{s.name}}</option>
+                        </select>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>City</label>
+                        <select class="form-control"  [attr.disabled]="isTicketId" [(ngModel)]="selectedCity"
+                             formControlName="state">
+
+                            <option *ngFor="let c of dropdownCity" [value]="c.name" [disabled]="isTicketId">{{c.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Ticket Raised By</label>
+                        <input type="text" formControlName="creator" class="form-control" [attr.disabled]="isTicketId" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required">Description</label>
+                        <textarea type="text" formControlName="description" class="form-control" [attr.disabled]="isTicketId"
+                            [ngClass]="{'is-invalid':(raiseTicketForm.get('description').touched || raiseTicketForm.get('description').dirty) && raiseTicketForm.get('description').invalid}">
+                                            </textarea>
+
+                    </div>
+                    <div *ngIf="(raiseTicketForm.get('description').touched || raiseTicketForm.get('description').dirty) && raiseTicketForm.get('description').invalid"
+                        class="error_sachinApp">
+                        <p *ngIf="raiseTicketForm.get('description').errors.required">Please enter the Description</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-6 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="onSubmit()"
+                            *ngIf="(!isView && !isTicketId) && !isAdmin"> Submit </button>&nbsp;
+                            <button class="btn btn-primary" (click)="update()"
+                            *ngIf="(!isView && isTicketId) && isAdmin"> Mark as Complete </button>&nbsp;
+                        <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

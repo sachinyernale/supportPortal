@@ -1,0 +1,32 @@
+<div class="container">
+    
+    
+    <div class="card">
+        <div class="card-header" style="text-align: center;">Tickets Summary
+          <!-- <i class="fa fa-refresh" aria-hidden="true" (click)="refresh()" style="float: right;" title="Refresh"></i> -->
+          <button style="font-size:12px" (click)="refresh()" style="float: right;">Refresh <i class="fa fa-refresh"></i></button> 
+        </div>
+    </div>
+   
+    <table class="table table-bordered">
+      <tr>
+        <th>Ticket_Id</th>
+        <th>Raised By</th>
+        <th width="400px">Subject</th>
+        <th >Status</th>
+        <th >Action</th>
+      </tr>
+      <tr *ngFor="let ticket of ticketList">
+        <td>{{ ticket.ticket_id }}</td>
+        <td>{{ ticket.creator }}</td>
+        <td> {{ ticket.subject }}</td>
+        <td [ngStyle]="{'color': (ticket.status=='open') ? 'red' : 'green'}">{{ ticket.status }}</td>
+        <td>
+          <a  class="btn btn-info" (click)="viewTicket(ticket.ticket_id,ticket.country,ticket.state,ticket.description,ticket.creator,ticket.subject)" >View</a>&nbsp;
+          <a   class="btn btn-primary" (click)="editTicket(ticket.ticket_id,ticket.country,ticket.state,ticket.description,ticket.creator,ticket.subject)">Edit</a>&nbsp;
+          
+          
+        </td>
+      </tr>
+    </table>
+ </div>

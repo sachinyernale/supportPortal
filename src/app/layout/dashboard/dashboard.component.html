@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ngb-carousel>
+                <ng-template *ngFor="let slider of sliders" ngbSlide>
+                    <img
+                        [src]="slider.imagePath"
+                        alt="Random first slide"
+                        class="img-fluid mx-auto d-block"
+                        width="100%"
+                    />
+                    <div class="carousel-caption">
+                        <h3>{{ slider.label }}</h3>
+                        <p>{{ slider.text }}</p>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [routerLink]="['/viewticket']"  [count]="26" [icon]="'fa-comments'" [label]="'Total Tickets!'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'warning'" [count]="10" [icon]="'fa-tasks'" [label]="'Resolved Tickets!'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat
+                [bgClass]="'success'"
+                [count]="10"
+                [icon]="'fa-shopping-cart'"
+                [label]="'Pending Tickets!'"
+            ></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'danger'" [count]="6" [icon]="'fa-support'" [label]="'New Tickets!'"></app-stat>
+        </div>
+    </div>
+    <hr />
+    
+    
+</div>
