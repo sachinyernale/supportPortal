@@ -1,22 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RaiseTicketService {
+  URL: string;
 
   constructor(private httpClient:HttpClient) { 
+  this.URL="http://35.175.209.6:8090/";
   }
 
   raiseTicket(data){
-    return this.httpClient.post(environment.baseURL+"saveTicket",data)
+    return this.httpClient.post(this.URL+"saveTicket",data)
   }
 
   resolveTicket(ticketId){
   var data;
-    return this.httpClient.put(environment.baseURL+"updateticket?ticketId="+ticketId+"&status=resolved",data)
+    return this.httpClient.put(this.URL+"updateticket?ticketId="+ticketId+"&status=resolved",data)
   }
 
 }

@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  URL: string;
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) { 
+    this.URL="http://35.175.209.6:8090/"
+  }
 
   registerUser(data){
-    return this.httpClient.post(environment.baseURL+"saveUser",data)
+    return this.httpClient.post(this.URL+"saveUser",data)
   }
 
   getUserDetails(data){
-    return this.httpClient.get(environment.baseURL+"getUser?userName="+data)
+    return this.httpClient.get(this.URL+"getUser?userName="+data)
   }
 
 }
