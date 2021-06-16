@@ -9,7 +9,8 @@ export class ViewTicketService {
   URL: string;
 
   constructor(private httpClient:HttpClient) {
-    this.URL="http://35.175.209.6:8090/";
+    // this.URL="http://35.175.209.6:8090/";
+    this.URL="http://3.216.90.68:30556/"
    }
 
   getAllTickets(){
