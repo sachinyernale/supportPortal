@@ -1,7 +1,7 @@
 <div [@routerTransition] class="login-page">
     <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <img class="user-avatar" src="../assets/images/logo.jpg" width="150px" />
             <h1>E-care Support Portal Demo</h1>
             <form role="form"  [formGroup]="loginForm" >
                 <div class="form-content">
@@ -24,11 +24,11 @@
                         </div>
                     </div>
                 </div>
-                <a (click)="onLoggedin()"  class="btn rounded-btn">{{
-                    'Log in' | translate
-                }}</a>
+                <a (click)="onLoggedin()"  class="btn rounded-btn">
+                    Log in
+                </a>
                 &nbsp;
-                <a [routerLink]="['/signup']" class="btn rounded-btn">{{ 'Register' | translate }}</a>
+                <a [routerLink]="['/signup']" class="btn rounded-btn">Register</a>
             </form>
         </div>
     </div>
