@@ -19,7 +19,7 @@ import { LanguageTranslationModule } from './shared/modules/language-translation
         HttpClientModule,
         LanguageTranslationModule,
         AppRoutingModule,
-        ToastrModule.forRoot({timeOut:60000,positionClass:'toast-top-left'})
+        ToastrModule.forRoot({timeOut:60000})
     ],
     declarations: [AppComponent],
     providers: [AuthGuard],
